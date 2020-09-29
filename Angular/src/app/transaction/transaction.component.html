@@ -1,0 +1,18 @@
+<h1>All Transactions</h1>
+
+<table>
+    <tr>
+        <th>Transaction ID</th>
+        <th>Date Of Transaction</th>
+        <th>Amount</th>
+        <th>Transaction Details</th>
+        <th>Transaction Type</th>
+    </tr>
+    <tr *ngFor="let t of transactions">
+        <td>{{t.transactionId}}</td>
+        <td>{{t.dateOfTransaction}}</td>
+        <td>{{t.amount}}</td>
+        <td>{{t.transactionDetails}}</td>
+        <td>{{t.transactionType}}</td>
+    </tr>
+</table>
