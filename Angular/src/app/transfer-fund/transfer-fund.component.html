@@ -5,19 +5,34 @@
     <form class="form" (ngSubmit)="onSubmit()" #transferform="ngForm">
         <tr>
             <label for="fromaccountId">Enter your account Id: </label><br>
-            <input placeholder="Enter your account Id:" class="form-control" type="number" name="fromaccountId" [(ngModel)]="transferForm.fromaccountID">
+            <input required placeholder="Enter your account Id:" #name="ngModel" class="form-control" type="number" name="fromaccountId" [(ngModel)]="transferForm.fromaccountID">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                <div *ngIf="name.errors.required">
+                    Your Account Number is required.
+                </div>
+            </div>
         </tr>
         <tr>
             <label for="fromAccountId">Enter receiver's account Id: </label><br>
-            <input placeholder="Enter receiver's account Id:" class="form-control" type="number" name="toAccountId" [(ngModel)]="transferForm.toAccountID">
+            <input placeholder="Enter receiver's account Id:" required #name1="ngModel" class="form-control" type="number" name="toAccountId" [(ngModel)]="transferForm.toAccountID">
+            <div *ngIf="name1.invalid && (name1.dirty || name1.touched)" class="alert alert-danger">
+                <div *ngIf="name1.errors.required">
+                    Receiver's Account Number is required.
+                </div>
+            </div>
         </tr>
         <tr>
             <label for="amt">Enter amount: </label><br>
-            <input placeholder="Enter Amount:" class="form-control" type="number" name="amt" [(ngModel)]="transferForm.amt">
+            <input placeholder="Enter Amount:" class="form-control" #name2="ngModel" required type="number" name="amt" [(ngModel)]="transferForm.amt">
+            <div *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="alert alert-danger">
+                <div *ngIf="name2.errors.required">
+                    Amount to be transferred is required.
+                </div>
+            </div>
         </tr>
         <tr>
             <input class="button1 button" type="reset">
-            <input class="button2 button" type="submit">
+            <input class="button2 button" [disabled]="transferform.invalid" type="submit">
         </tr>
         <div class="success" *ngIf="msg!=undefined">
             {{msg}}

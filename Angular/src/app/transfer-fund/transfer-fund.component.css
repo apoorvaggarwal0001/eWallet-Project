@@ -15,6 +15,11 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+.alert{
+    color:red;
+    font-weight: 600;
+}
+
 .full-form h1{
     text-align: center;
     padding: 20px;
